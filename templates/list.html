@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    {% for post in object_list %}
+        <div class="alert alert-{{ post.priority }}" role="alert">
+          <p>{{ post.title }}</p>
+          <a href="{% url 'update' post.pk %}" class="btn btn-info" role="button" aria-pressed="true">編集画面へ</a>
+          <a href="{% url 'delete' post.pk %}" class="btn btn-danger active" role="button" aria-pressed="true">削除画面へ</a>
+          <a href="{% url 'detail' post.pk %}" class="btn btn-primary active" role="button" aria-pressed="true">詳細画面へ</a>
+        </div>
+    {% endfor %}
+    <a href="{% url 'create' %}">新規作成</a>
+  </div>
+{% endblock content %}
